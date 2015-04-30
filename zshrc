@@ -71,10 +71,13 @@ export LANG=en_US.UTF-8
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
-#autojump
-#tmux
-alias tmux='TERM=xterm-256color tmux -2'
-alias j='autojump'
 export EDITOR=vim
 export SVN_EDITOR=vim
+#autojump
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
+alias j='autojump'
+#tmux
+alias tmux='TERM=xterm-256color tmux -2'
+#personal
+cls() { cd "$1";ls; }
+backup() { cp "$1"{,.bak};}
