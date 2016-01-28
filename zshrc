@@ -75,7 +75,6 @@ export EDITOR=vim
 export SVN_EDITOR=vim
 #autojump
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
-alias j='autojump'
 #tmux
 alias tmux='TERM=xterm-256color tmux -2'
 #personal
