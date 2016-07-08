@@ -18,18 +18,21 @@ function get_linux_version()
 function command_install()
 {
     if [[ $1 == ubuntu ]]  
-        installer="apt-get"
-        dev="dev"
+    then
+        for package in libxslt  libffi gcc  openssl jq libxml2-dev libxslt1-dev python-dev
+        do
+            echo "begin to install $package"
+            apt-get install $package
+        done
     elif [[ $1 == centos ]]  
-        installer="yum"
-        dev="devel"
+    then
+        yum install libxslt-devel  libffi libffi-devel  python-devel gcc  openssl openssl-devel mysql-devel jq
     fi
-    $installer install libxslt-$dev  libffi libffi-$dev  python-$dev gcc  openssl openssl-$dev mysql-$dev jq
 }
 
 function python_install()
 {
-    python get_pip.py
+    python get-pip.py
     pip install scrapy beautifulsoup4 redis MySQL-python gevent requests
 }
 
