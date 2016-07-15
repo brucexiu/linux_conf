@@ -19,14 +19,14 @@ function command_install()
 {
     if [[ $1 == ubuntu ]]  
     then
-        for package in libxslt  libffi gcc  openssl jq libxml2-dev libxslt1-dev python-dev
+        for package in libxslt  libffi gcc  openssl jq libxml2-dev libxslt1-dev python-dev tmux
         do
             echo "begin to install $package"
             apt-get install $package
         done
     elif [[ $1 == centos ]]  
     then
-        yum install libxslt-devel  libffi libffi-devel  python-devel gcc  openssl openssl-devel mysql-devel jq
+        yum install libxslt-devel  libffi libffi-devel  python-devel gcc  openssl openssl-devel mysql-devel jq tmux
     fi
 }
 
