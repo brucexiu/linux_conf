@@ -20,6 +20,7 @@ let g:miniBufExplModSelTarget = 1
 set expandtab
 set tabstop=4
 set shiftwidth=4
+set encoding=utf-8
 set cursorline
 nmap <F8> :!aspell -e -c %<CR>:e<CR>
 map , :s/^/    /<CR>
