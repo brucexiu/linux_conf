@@ -19,7 +19,7 @@ function command_install()
 {
     if [[ $1 == ubuntu ]]  
     then
-        for package in libxslt  libffi gcc  openssl jq libxml2-dev libxslt1-dev python-dev tmux
+        for package in libxslt  libffi gcc  openssl jq libxml2-dev libxslt1-dev python-dev tmux parallel
         do
             echo "begin to install $package"
             apt-get install $package
@@ -33,7 +33,7 @@ function command_install()
 function python_install()
 {
     python get-pip.py
-    pip install scrapy beautifulsoup4 redis MySQL-python gevent requests
+    pip install scrapy beautifulsoup4 redis MySQL-python gevent requests pep8
 }
 
 linux_version=`get_linux_version`
