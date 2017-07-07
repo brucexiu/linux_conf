@@ -24,15 +24,17 @@ set encoding=utf-8
 set cursorline
 nmap <F8> :!aspell -e -c %<CR>:e<CR>
 map , :s/^/    /<CR>
-function! UPDATE_TAGS()
-  let _f_ = expand("%:p")
-  let _cmd_ = '"ctags -a -f /dvr/tags --c++-kinds=+p --fields=+iaS --extra=+q " ' . '"' . _f_ . '"'
-  let _resp = system(_cmd_)
-  unlet _cmd_
-  unlet _f_
-  unlet _resp
-endfunction
-autocmd BufWritePost *.cpp,*.h,*.c call UPDATE_TAGS()
+"function! UPDATE_TAGS()
+"  let _f_ = expand("%:p")
+"  let _cmd_ = '"ctags -a -f /dvr/tags --c++-kinds=+p --fields=+iaS --extra=+q " ' . '"' . _f_ . '"'
+"  let _resp = system(_cmd_)
+"  unlet _cmd_
+"  unlet _f_
+"  unlet _resp
+"endfunction
+"autocmd BufWritePost *.cpp,*.h,*.c call UPDATE_TAGS()
+map <F5> <Esc>:!ctags -R *<CR><CR>
+set tags+=./tags
 " Tell vim to remember certain things when we exit
 "  '10  :  marks will be remembered for up to 10 previously edited files
 "  "100 :  will save up to 100 lines for each register
