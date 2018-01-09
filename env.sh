@@ -9,3 +9,5 @@ git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 cp zshrc ~/.zshrc
 echo "autojump"
 git clone https://github.com/joelthelion/autojump.git && cd autojump && ./install.py
+echo "vundle"
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
