@@ -73,6 +73,7 @@ export LANG=en_US.UTF-8
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 export EDITOR=vim
 export SVN_EDITOR=vim
+export PIPENV_DEFAULT_PYPI_INDEX='https://mirrors.aliyun.com/pypi/simple'
 #autojump
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
 #tmux

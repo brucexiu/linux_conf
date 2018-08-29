@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 echo "vim"
 cp vimrc ~/.vimrc
+mkdir -p ~/vim/bundle && cd ~/vim/bundle 
+git clone https://github.com/VundleVim/Vundle.vim.git
+cd -
 echo "tmux"
 cp tmux.conf ~/.tmux.conf
 echo "zsh"
