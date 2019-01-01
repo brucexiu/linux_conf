@@ -38,7 +38,7 @@ set fileformat=unix
 
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim/
+set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 
 Plugin 'scrooloose/nerdtree.git'
