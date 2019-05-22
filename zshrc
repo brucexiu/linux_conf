@@ -78,6 +78,25 @@ export PIPENV_DEFAULT_PYPI_INDEX='https://mirrors.aliyun.com/pypi/simple'
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
 #tmux
 alias tmux='TERM=xterm-256color tmux -2'
+alias psh='pipenv shell'
+alias proxy='export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087'
+alias unproxy='unset http_proxy; unset https_proxy'
 #personal
 cls() { cd "$1";ls; }
 backup() { cp "$1"{,.bak};}
+#export PATH="/usr/local/opt/openssl/bin:$PATH"
+ export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+export PATH="/usr/local/sbin:$PATH"
+
+# fzf
+export FZF_DEFAULT_COMMAND='ag -a -u -g ""'
+export FZF_DEFAULT_OPTS="--no-mouse --height 40% --reverse --border --prompt '>>>' \
+    --bind 'alt-j:preview-down,alt-k:preview-up,ctrl-v:execute(vim {})+abort,ctrl-y:execute-silent(cat {} | pbcopy)+abort,?:toggle-preview' \
+    --header 'A-j/k: preview down/up, C-v: open in vim, C-y: copy, ?: toggle preview' \
+    --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -100'"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export GOROOT=/usr/local/opt/go/libexec
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
