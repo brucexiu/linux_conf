@@ -55,6 +55,7 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'jnurmine/Zenburn'
 Plugin 'fatih/vim-go'
+Plugin 'mindriot101/vim-yapf'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'kien/ctrlp.vim'  " super search
@@ -91,11 +92,16 @@ set foldlevel=99
 
 let g:SimpylFold_docstring_preview=1
 let g:Powerline_symbols = 'fancy'
-let g:ycm_autoclose_preview_window_after_completion=1
 let g:ale_completion_enabled = 1
 let g:ale_echo_msg_error_str='E'
 let g:ale_echo_msg_warning_str='W'
 let g:ale_echo_msg_format='[%linter%] %code% %s [%severity%]'
+let g:ale_fixers = {
+			\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+			\   'python': ['isort', 'yapf'],
+			\}
+let g:ale_fix_on_save = 1
+
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
@@ -112,18 +118,23 @@ function PyAddHeader()
 	call append(0, "#!/usr/bin/env python")
 	call append(1, "# coding: utf8")
 endfunction
-autocmd FileType c,cpp,java,python autocmd BufWritePre <buffer> %s/\s\+$//e
+" autocmd FileType c,cpp,java,python autocmd BufWritePre <buffer> %s/\s\+$//e
 
 " golang
 let g:ycm_gocode_binary_path = "$GOPATH/bin"
 let g:go_textobj_include_function_doc = 0
 
 " autoformat
-autocmd FileType python let g:autoformat_verbosemode=1
+" autocmd FileType python let g:autoformat_verbosemode=1
 let g:vim_isort_python_version = 'python3'
-let g:formatter_yapf_style = 'pep8'
-au BufWrite * :Isort
-au BufWrite * :Autoformat
+let g:yapf_style=$HOME."/.config/yapf/style"
+" let g:formatter_yapf_style = 'pep8'
+" au BufWrite * :Isort
+" au BufWrite * :Autoformat
+
+" auto complete
+let g:ycm_autoclose_preview_window_after_completion=1
+let g:jedi#force_py_version=3
 
 " silent w
-nnoremap <silent><leader>w :silent w<cr>
+" nnoremap <silent><leader>w :silent w<cr>
