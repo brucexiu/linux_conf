@@ -62,6 +62,7 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'kien/ctrlp.vim'  " super search
 Plugin 'tpope/vim-fugitive'  " git integration
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'junegunn/vim-emoji'
 
 call vundle#end()
 filetype plugin indent on
@@ -168,3 +169,25 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+"-------------------------------------------------------------------------
+" emoji-vim
+"-------------------------------------------------------------------------
+set completefunc=emoji#complete
+map <leader>e  :%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<CR>
+
+"-------------------------------------------------------------------------
+"Persistent Undo
+"-------------------------------------------------------------------------
+set undofile " Maintain undo history between sessions
+set undodir=~/.vim/undodir
+
+"-------------------------------------------------------------------------
+" relative number
+"-------------------------------------------------------------------------
+set relativenumber
+augroup relative_numbser                    " 插入模式下用绝对行号, 普通模式下用相对
+  autocmd!
+  autocmd InsertEnter * :set norelativenumber number
+  autocmd InsertLeave * :set relativenumber
+augroup END
