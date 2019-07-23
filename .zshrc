@@ -37,7 +37,7 @@ ZSH_THEME="alanpeabody"
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment following line if you want to the command execution time stamp shown 
+# Uncomment following line if you want to the command execution time stamp shown
 # in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
@@ -71,24 +71,36 @@ export LANG=en_US.UTF-8
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
 export EDITOR=vim
-export SVN_EDITOR=vim
-export PIPENV_DEFAULT_PYPI_INDEX='https://mirrors.aliyun.com/pypi/simple'
+
 #autojump
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
+
 #tmux
 alias tmux='TERM=xterm-256color tmux -2'
+
+# pipenv
 alias psh='pipenv shell'
-alias proxy='export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087'
-alias unproxy='unset http_proxy; unset https_proxy'
+export PIPENV_DEFAULT_PYPI_INDEX='https://mirrors.aliyun.com/pypi/simple'
+
+# git
+alias glog='git log --graph --abbrev-commit --decorate --format=format:"%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)" --all'
+
 #personal
 cls() { cd "$1";ls; }
 backup() { cp "$1"{,.bak};}
-#export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+# NVM
  export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
-export PATH="/usr/local/sbin:$PATH"
+
+#GOLANG
+export GOROOT=/usr/local/opt/go/libexec
+export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/sbin:$GOROOT/bin:$GOPATH/bin
+
 
 # fzf
 export FZF_DEFAULT_COMMAND='ag -a -u -g ""'
@@ -97,6 +109,12 @@ export FZF_DEFAULT_OPTS="--no-mouse --height 40% --reverse --border --prompt '>>
     --header 'A-j/k: preview down/up, C-v: open in vim, C-y: copy, ?: toggle preview' \
     --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -100'"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export GOROOT=/usr/local/opt/go/libexec
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+# pyenv
+eval "$(pyenv init -)"
+
+# brew
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles  # Tsinghua source for brew
+
+alias proxy='export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087'
+alias unproxy='unset http_proxy; unset https_proxy'
